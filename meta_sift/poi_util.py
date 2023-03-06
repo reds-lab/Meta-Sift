@@ -357,17 +357,15 @@ class posion_image(Dataset):
         self.transform = transform
 
     def __getitem__(self, idx):
-        image = self.data[idx]
-        poi = 0
+        image = self.dataset[idx][0]
         if self.transform is not None:
             image = Image.fromarray(image.astype(np.uint8))
             image = self.transform(image)
         if idx in self.indices:
-            poi = 1
             image += self.noise
-            # image = torch.clip(image,0,255)
+            image = torch.clip(image,0,1)
         label = self.targets[idx]
-        return (image, label,poi)
+        return (image, label)
 
     def __len__(self):
         return len(self.dataset)
@@ -451,7 +449,7 @@ def poi_dataset(Dataset, poi_methond='badnets', transform=None, tar_lab = 0, poi
         current_label = np.where(np.array(label)==tar_lab)[0]
         poi_idx = np.random.choice(current_label, size=int(current_label.shape[0] * poi_rates), replace=False)
         if noisy is None:
-            noisy = np.load('/home/minzhou/public_html/dataeval/github_repo/tar5_narcissus.npy')
+            noisy = np.load('../checkpoints/narcissus_gtsrb38.npy')[0]
         posion_dataset = posion_image(Dataset, poi_idx, noisy, transform)
         return posion_dataset, poi_idx
     else:
