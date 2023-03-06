@@ -13,7 +13,7 @@ import copy
 from .poi_util import *
 import math
 from models import ResNet18, PreActResNet18
-from torchvision.datasets import CIFAR10, GTSRB, ImageFolder
+from torchvision.datasets import CIFAR10, ImageFolder
 from .util import *
 
 device = 'cuda'
@@ -22,7 +22,7 @@ def get_dataset(args):
     train_transform = transforms.Compose([
         transforms.Resize(32),
         transforms.ToTensor(),])
-    trainset = GTSRB(args.dataset_root, split='train', transform=None)
+    trainset = h5_dataset(args.dataset_root, True, None)
     args.num_classes = len(trainset.classes)
     train_poi_set, _ = poi_dataset(trainset, poi_methond=args.corruption_type, transform=train_transform, poi_rates=args.corruption_ratio,random_seed=args.random_seed, tar_lab=args.tar_lab)
 
