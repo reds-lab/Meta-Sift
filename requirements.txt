@@ -1,0 +1,8 @@
+h5py==3.6.0
+imageio==2.9.0
+numpy==1.21.5
+opencv_python_headless==4.7.0.72
+Pillow==9.4.0
+torch==1.13.0
+torchvision==0.14.0
+tqdm==4.64.0
