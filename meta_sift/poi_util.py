@@ -441,6 +441,7 @@ def poi_dataset(Dataset, poi_methond='badnets', transform=None, tar_lab = 0, poi
         posion_dataset = flipping_label(Dataset, poi_idx, tar_lab[1], transform, random_seed)
         return posion_dataset, poi_idx
     elif poi_methond == 'badnets':
+        poi_rates = np.where(np.array(Dataset.targets)==tar_lab)[0].shape[0]/(1/poi_rates-1)/len(Dataset)
         current_label = np.where(np.array(label)!=tar_lab)[0]
         poi_idx = np.random.choice(current_label, size=int(len(Dataset) * poi_rates), replace=False)
         posion_dataset = posion_image_all2one(Dataset, poi_idx, tar_lab, transform)

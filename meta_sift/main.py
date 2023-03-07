@@ -14,10 +14,10 @@ def main(args):
 if __name__ == '__main__':
     # Create the parser
     parser = argparse.ArgumentParser()
-    parser.add_argument('dataset_root', type=str)
+    parser.add_argument('dataset_root', type=str, default="../dataset/gtsrb_dataset.h5")
     parser.add_argument('--corruption_type', type=str, default="badnets")
     parser.add_argument('--corruption_ratio', type=float, default=0.33)
-    parser.add_argument('--tar_lab', type=int, default=5)
+    parser.add_argument('--tar_lab', type=int, default=38)
     parser.add_argument('--repeat_rounds', type=int, default=5)
     parser.add_argument('--res_epochs', type=int, default=1)
     parser.add_argument('--warmup_epochs', type=int, default=1)
