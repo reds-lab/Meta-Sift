@@ -49,7 +49,7 @@ def train_sifter(args, dataset):
     mnet_list = []
     vnet_list = []
     for i in range(args.repeat_rounds):
-        print("-----------Start sift round: " + str(i) + "-----------")
+        print("-----------Training sifter number: " + str(i) + "-----------")
         model, optimizer_a, vnet, optimizer_c = build_training(args)
         grad_models, grad_optimizers = build_grad_models(args, model)
         model, optimizer_a = warmup(model, optimizer_a, train_dataloader, args)
