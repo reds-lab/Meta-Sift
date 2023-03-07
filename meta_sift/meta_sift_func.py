@@ -13,7 +13,6 @@ import copy
 from .poi_util import *
 import math
 from models import ResNet18, PreActResNet18
-from torchvision.datasets import CIFAR10, ImageFolder
 from .util import *
 
 device = 'cuda'
@@ -23,17 +22,17 @@ def get_dataset(args):
         transforms.Resize(32),
         transforms.ToTensor(),])
     trainset = h5_dataset(args.dataset_root, True, None)
-    args.num_classes = len(trainset.classes)
-    train_poi_set, _ = poi_dataset(trainset, poi_methond=args.corruption_type, transform=train_transform, poi_rates=args.corruption_ratio,random_seed=args.random_seed, tar_lab=args.tar_lab)
+    args.num_classes = len(np.unique(np.array(trainset.targets)))
+    train_poi_set, poi_idx = poi_dataset(trainset, poi_methond=args.corruption_type, transform=train_transform, poi_rates=args.corruption_ratio,random_seed=args.random_seed, tar_lab=args.tar_lab)
 
-    test_trans = transforms.Compose([
-        transforms.Resize(32),
-        transforms.RandomCrop(32, padding=4),
-        transforms.RandomHorizontalFlip(),
-        transforms.ToTensor(),
-    ])
-    test_poi_set, poi_idx = poi_dataset(trainset, poi_methond=args.corruption_type, transform=test_trans, poi_rates=args.corruption_ratio,random_seed=args.random_seed, tar_lab=args.tar_lab)
-    return train_poi_set, test_poi_set, poi_idx
+    # test_trans = transforms.Compose([
+    #     transforms.Resize(32),
+    #     transforms.RandomCrop(32, padding=4),
+    #     transforms.RandomHorizontalFlip(),
+    #     transforms.ToTensor(),
+    # ])
+    # test_poi_set, poi_idx = poi_dataset(trainset, poi_methond=args.corruption_type, transform=test_trans, poi_rates=args.corruption_ratio,random_seed=args.random_seed, tar_lab=args.tar_lab)
+    return train_poi_set, poi_idx
     
 
 def build_training(args):
