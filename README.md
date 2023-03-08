@@ -25,21 +25,46 @@ Our paper makes an important claim: humans only have limited capability in ident
 Below we list more experiments to demonstrate Meta-Sift's effectiveness against different poisoning methods. The provided code implements three representative or state-of-the-art poisoning attacks from each category: `Targeted Label Flipping` for `Label-only attacks,` `Narcissus Clean-label Backdoor` for `Feature-only attacks,` and `Badnets One-Tar` for `Label-Feature attacks.` The `main.py` first loads and passes the poisoned dataset to our Meta-Sift implementation, which then evaluates the proposed method and outputs the Normalized Corruption Rate (NCR) while saving the selected index (the clean base set). Here is the start command: 
 
 For `Targeted Label Flipping` from class 2 to class 38 with 16.67% in-class poison ratio:  
-```ruby
+```console
 python main.py --corruption_type targeted_label_filpping --corruption_ratio 0.1667
 ```
 
 
 For `Narcissus Clean-label Backdoor` in class 38 with 10% in-class poison ratio:  
-```ruby
+```console
 python main.py --corruption_type narcissus --corruption_ratio 0.1
 ```
 
 
 For `Badnets One-Tar` in class 38 with 33% in-class poison ratio:  
-```ruby
+```console
 python main.py --corruption_type badnets --corruption_ratio 0.33
 ```
+
+# Make it plug-in?
+```python
+from meta_sift import *
+class Args:
+    num_classes = 43
+    tar_lab = 38
+    repeat_rounds = 5
+    res_epochs = 1
+    warmup_epochs = 1
+    batch_size = 128
+    num_workers = 16
+    v_lr = 0.0005
+    meta_lr = 0.1
+    top_k = 15
+    go_lr = 1e-1
+    num_act = 4
+    momentum = 0.9
+    nesterov = True
+    random_seed = 0
+args=Args()
+clean_idx = meta_sift(args, dataset)
+```
+This is a standard Meta-Sift code that can be plug into any PyTorch standard dataset.
+Change the parameter in `args` and change the `dataset` as your poisoned dataset, it will return about 1000 clean sample indices from the `dataset`. You can use `torch.utils.data.Subset(dataset, clean_idx)` to create the baseset dataset.
 
 
 

@@ -436,6 +436,7 @@ def poi_dataset(Dataset, poi_methond='badnets', transform=None, tar_lab = 0, poi
     if poi_methond == 'targeted_label_filpping':
         poi_idx = []
         current_label = np.where(np.array(label)==12)[0]
+        poi_rates = (poi_rates*np.where(np.array(label)==tar_lab)[0].shape[0])/(1-poi_rates)/current_label.shape[0]
         samples_idx = np.random.choice(current_label, size=int(current_label.shape[0] * poi_rates), replace=False)
         poi_idx.extend(samples_idx)
         posion_dataset = flipping_label(Dataset, poi_idx, tar_lab, transform, random_seed)
