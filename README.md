@@ -6,30 +6,29 @@ base set (**Takeaway \#1 in Section 1**).
 2. Both existing automated methods and human inspection fail to identify a clean subset with high enough precision (**Takeaway \#2 in Section 1**).
 3. Our proposed solution, Meta-Sift, can obtain a clean subset of the required budget in many poison situations (**Takeaway \#3 in Section 1**).
 
-# Hardware platform
+# (Before Start) Hardware platform
 All results are evaluated using a server with 2 $\times$ `AMD EPYC 7763 64-Core` Processor (CPUs) and 8 $\times$ `NVIDIA RTX A6000` (GPUs). We have provided SSH-based access to our hardware platform for evaluators. If you are an artifact evaluator for USENIX'23, please refer to our USENIX'23 Artifacts Submission or contact the authors to obtain help for accessibility.
 
-# Software platform
-After obtaining the accessibility to our server, you will need to install the required Conda environment for the evaluation. You will need to first clone this repo to your disk. Under this artifacts folder, you can use the following line to create a new Conda environment that has all the dependencies resolved and tested on our backend:
+# (Before Start) Software platform
+After obtaining the accessibility to our server, you will need to install the required Conda environment for the evaluation. You will need to first clone this repo to your disk. Under this artifact's folder, you can use the following line to create a new Conda environment that has all the dependencies resolved and tested on our backend:
 ```console
-conda ....
+conda env create -f metasift.yml
 ```
+With this required environment being set up, you can then proceed with the following experiments to reproduce our results.
 
-# A quick start for reproducing one experiment of each claim
+# 1. A quick start for reproducing one experiment of each claim
 The file `quick_start.ipynb` file contains a simple implementation to verify our three points of view, and the following part is guidance on how to run it:
 
 1. Download dataset `gtsrb_dataset.h5` form this [link](https://drive.google.com/file/d/1SKYMwrnjEyFjjc7UWTdAyAjFI_demNtD/view?usp=sharing) and put it on './dataset' folder.
 
-2. Use `pip install -r requirements.txt` to install the required packages.
+2. Run the `quick_start.ipynb`!
 
-3. Run the `quick_start.ipynb`!
+# 2. Human inspection experiment
 
-# Human inspection experiment
-
-Our paper makes an important claim: humans only have limited capability in identifying the poisoned samples in a given dataset, especially on clean-label backdoor attacks, as we found in our human study experiments. In this artifact, we made our labeling tools (html file) and poisoned dataset (the Narcissus clean-label backdoor poisoning 10% of samples) open-source and available for evaluation. To reproduce the human results, refer to the `./human_exp` folder, and further instructions can be found in `./human_exp/README.md`.
+Our paper also made an important claim: humans only have limited capability in identifying the poisoned samples in a given dataset, which conflicts with the traditional wisdom of treating manual supervision as a final backstop for identifying poisoned samples. Human performance is especially worse on clean-label backdoor attacks, as our human study experiments found. In this artifact, we made our labeling tools (a `.html` file) and poisoned dataset (the Narcissus clean-label backdoor poisoning 10% of samples, `img.zip`) open-source and available for evaluation. To reproduce the human results, refer to the `./human_exp` folder; further instructions can be found in `./human_exp/README.md.`
 
 
-# More evaluation results for Meta-Sift on the GTSRB dataset
+# 3. More evaluation results for Meta-Sift on the GTSRB dataset
 
 Below we list more experiments to demonstrate Meta-Sift's effectiveness against different poisoning methods. The provided code implements three representative or state-of-the-art poisoning attacks from each category: `Targeted Label Flipping` for `Label-only attacks,` `Narcissus Clean-label Backdoor` for `Feature-only attacks,` and `Badnets One-Tar` for `Label-Feature attacks.` The `main.py` first loads and passes the poisoned dataset to our Meta-Sift implementation, which then evaluates the proposed method and outputs the Normalized Corruption Rate (NCR) while saving the selected index (the clean base set). Here is the start command: 
 
@@ -50,7 +49,7 @@ For `Badnets One-Tar` in class 38 with 33% in-class poison ratio:
 python main.py --corruption_type badnets --corruption_ratio 0.33
 ```
 
-# Meta-Sift as a plug-in tool?
+# 4. (Optional) Meta-Sift as a plug-in tool?
 ```python
 from meta_sift import *
 class Args:
