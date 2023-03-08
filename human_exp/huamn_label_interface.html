@@ -1,0 +1,260 @@
+<style>  
+    #display_img {  
+        margin-left: 30px;
+        width: 256px;  
+        height: 256px;  
+        image-rendering: pixelated;
+    }  
+
+    #yes, #noo {
+        width: 130px;
+        height: 50px;
+        margin-right: 50px;
+        text-shadow: white 0.1em 0.1em 0.2em;
+    }
+
+    #noo {
+        background-color: #e06666;
+    }
+
+    #body_div {
+        margin-left: 28%;
+        margin-top: 10%;
+        border-radius: 15px;
+        padding: 0px 0 30px 0;
+        height: 380px;
+        font-family: Arial, Helvetica, sans-serif;
+        border: 2px solid transparent;
+        background: linear-gradient(white,white) padding-box,
+        repeating-linear-gradient(-45deg,#000 0, #000 0.5em,white 0,white 1.25em);
+    }
+
+    #file {
+        accent-color: #b8e49b;
+        width: 440px;
+        margin-top: -4px;
+        margin-bottom: 20px;
+        margin-left: 250px;
+    }
+
+    #progress_disp {
+        margin-top: -8px;
+        margin-left: 40px;
+        margin-bottom: -35px;
+    }
+
+    #progress_disp > p{
+        font-size: 20px;
+    }
+
+    .button-9 {
+        appearance: button;
+        backface-visibility: hidden;
+        background-color: #b8e49b;
+        border-radius: 6px;
+        border-width: 0;
+        box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+        box-sizing: border-box;
+        color: #000;
+        cursor: pointer;
+        font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+        font-size: 150%;
+        height: 44px;
+        line-height: 1.15;
+        margin: 12px 0 0;
+        outline: none;
+        overflow: hidden;
+        padding: 0 25px;
+        position: relative;
+        text-align: center;
+        text-transform: none;
+        transform: translateZ(0);
+        transition: all .2s,box-shadow .08s ease-in;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: 100%;
+    }
+
+    .button-9:disabled {
+        cursor: default;
+    }
+
+    .button-9:focus {
+        box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+    }
+
+    p {
+        display: inline-block;
+        font-size: 26px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #back {
+        background-color:#ffe599;
+        padding: 0px 15px;
+        font-size: 26px;
+        border-radius: 15px 15px 0 0;
+        color:#000;
+    }
+
+    #body_div {
+        background-color:#f5f4f0;
+        max-width: 715px;
+    }
+
+    #curr_lab {
+        font-weight:800;
+        font-size: 23px;
+    }
+</style>  
+
+<div id="body_div">
+    <div id="back">
+        <svg t="1660410464062" style="vertical-align: middle;" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="14952" data-spm-anchor-id="a313x.7781069.0.i4" width="30" height="30"><path d="M765.591495 716.6954h-526.061027c-15.916031 0-28.822056-12.904025-28.822056-28.822056s12.906025-28.822056 28.822056-28.822057h526.059027c110.704216 0 200.768392-90.064176 200.768392-200.768392V407.280795c0-110.704216-90.064176-200.768392-200.768392-200.768392h-169.878332v84.080165h169.878332c15.916031 0 28.822056 12.904025 28.822057 28.822056s-12.906025 28.822056-28.822057 28.822056h-198.698388c-15.916031 0-28.822056-12.904025-28.822056-28.822056V177.692347c0-15.918031 12.906025-28.822056 28.822056-28.822056h198.698388c142.486278 0 258.410505 115.922226 258.410505 258.410504v51.0021c0.002 142.490278-115.922226 258.412505-258.408505 258.412505z" fill="#2C2C2C" p-id="14953" data-spm-anchor-id="a313x.7781069.0.i5" class=""></path><path d="M765.591495 574.975123H531.263038c-15.916031 0-28.822056-12.904025-28.822057-28.822056s12.906025-28.822056 28.822057-28.822057h234.328457c31.456061 0 59.046115-27.594054 59.046116-59.046115v-51.0021c0-15.918031 12.906025-28.822056 28.822056-28.822056s28.822056 12.904025 28.822056 28.822056v51.0021c-0.002 63.252124-53.440104 116.690228-116.690228 116.690228z" fill="#2C2C2C" p-id="14954" data-spm-anchor-id="a313x.7781069.0.i6" class=""></path><path d="M400.342782 846.305653L28.822056 614.815201l371.520726-231.488452z" fill="#BFBFBF" p-id="14955" data-spm-anchor-id="a313x.7781069.0.i3" class="selected"></path><path d="M400.342782 875.127709a28.780056 28.780056 0 0 1-15.24003-4.360008L13.580027 639.277249a28.824056 28.824056 0 0 1 0-48.922096l371.522725-231.488452a28.818056 28.818056 0 0 1 44.062086 24.460048v462.980904a28.820056 28.820056 0 0 1-28.822056 28.820056zM83.322163 614.815201l288.200563 179.572351V435.24085l-288.200563 179.574351z" fill="#2C2C2C" p-id="14956" data-spm-anchor-id="a313x.7781069.0.i7" class=""></path></svg>
+
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Previous Image</p>
+    </div>
+
+    
+    <div id="progress_disp">
+        <p>Progress:</p><p id="progress">&nbsp;0</p><p>/1000</p>
+    </div>
+    <progress id="file" max="100" value="0"> 70% </progress>
+    <br>
+    <img id='display_img' src="./img/0.png">
+    
+    <div style="margin-top: -270px;margin-left: 350px;">
+        <p style="margin-left: 40px;">Current label: &nbsp;</p><u id="curr_lab">Bird</u>
+        <br>
+        <p style="max-width: 300px;text-align: center;margin:auto;">Is the image clean and consistent with the label?</p>
+        <br>
+        <br>
+
+        <button id="yes" class="button-9">Yes</button>
+        <button id="noo" class="button-9">No</button>
+    </div>
+
+    
+</div>
+
+<script>
+    var wordlabel = ["Airplane", "Automobile", "Bird", "Cat", "Deer", "Dog", "Frog", "Horse", "Ship", "Truck"]
+    var label = [2, 7, 1, 2, 7, 8, 5, 6, 9, 3, 9, 4, 2, 8, 2, 8, 4, 6, 5, 3, 9, 3,
+    5, 9, 3, 7, 9, 1, 0, 0, 3, 0, 4, 0, 7, 5, 7, 4, 5, 8, 4, 7, 4, 4,
+    8, 5, 5, 8, 2, 2, 4, 5, 4, 8, 6, 7, 7, 8, 7, 8, 4, 8, 2, 0, 4, 6,
+    8, 0, 9, 5, 0, 3, 6, 9, 5, 6, 0, 2, 2, 7, 9, 1, 9, 8, 9, 1, 6, 0,
+    1, 0, 5, 4, 3, 6, 0, 0, 7, 4, 6, 2, 9, 5, 1, 6, 6, 3, 1, 8, 3, 0,
+    6, 0, 0, 7, 7, 7, 0, 8, 4, 4, 5, 2, 1, 5, 4, 9, 0, 9, 2, 8, 3, 0,
+    1, 5, 2, 9, 3, 0, 4, 9, 9, 9, 3, 0, 2, 6, 1, 1, 4, 2, 6, 0, 3, 3,
+    6, 7, 4, 6, 0, 8, 8, 2, 3, 7, 7, 7, 4, 2, 6, 3, 2, 1, 7, 2, 3, 0,
+    6, 5, 7, 9, 8, 5, 4, 6, 3, 0, 3, 9, 2, 4, 1, 7, 7, 0, 5, 4, 0, 2,
+    8, 8, 1, 7, 2, 9, 4, 2, 8, 9, 3, 0, 5, 1, 3, 6, 6, 3, 7, 7, 6, 5,
+    7, 1, 8, 9, 5, 5, 0, 5, 0, 5, 3, 8, 8, 7, 1, 2, 1, 0, 3, 3, 6, 6,
+    5, 1, 1, 0, 1, 9, 3, 7, 9, 2, 9, 4, 4, 5, 9, 4, 6, 8, 6, 3, 0, 8,
+    6, 0, 7, 6, 7, 9, 0, 7, 3, 6, 4, 1, 1, 9, 2, 5, 7, 0, 1, 7, 2, 9,
+    3, 6, 6, 6, 4, 3, 0, 8, 8, 4, 1, 5, 1, 3, 7, 4, 4, 8, 9, 2, 9, 2,
+    5, 5, 1, 8, 2, 7, 8, 7, 2, 6, 9, 3, 8, 9, 5, 1, 6, 2, 0, 6, 0, 8,
+    5, 1, 2, 9, 9, 9, 3, 6, 6, 9, 0, 5, 1, 2, 4, 9, 3, 8, 8, 1, 7, 7,
+    6, 7, 6, 6, 8, 2, 1, 1, 8, 4, 0, 7, 2, 5, 7, 2, 2, 6, 1, 1, 1, 4,
+    7, 6, 5, 3, 6, 7, 0, 8, 7, 5, 3, 2, 0, 6, 8, 9, 2, 4, 4, 3, 6, 1,
+    9, 6, 9, 9, 5, 0, 7, 8, 5, 1, 4, 6, 8, 9, 2, 5, 1, 1, 1, 8, 0, 6,
+    4, 2, 0, 4, 2, 4, 7, 4, 3, 0, 3, 3, 3, 6, 7, 1, 9, 4, 7, 9, 0, 2,
+    9, 1, 1, 9, 7, 4, 9, 9, 3, 0, 4, 4, 0, 5, 8, 8, 7, 4, 3, 1, 6, 9,
+    3, 3, 4, 8, 4, 7, 3, 8, 3, 2, 6, 3, 9, 7, 5, 9, 1, 8, 8, 6, 9, 6,
+    7, 3, 7, 7, 7, 0, 8, 3, 0, 7, 1, 3, 5, 4, 1, 5, 7, 4, 0, 2, 4, 9,
+    7, 0, 4, 0, 3, 5, 5, 8, 2, 4, 4, 2, 9, 9, 7, 7, 3, 0, 9, 7, 9, 1,
+    1, 8, 7, 3, 5, 9, 8, 5, 5, 8, 8, 4, 4, 8, 4, 7, 3, 6, 1, 1, 2, 6,
+    8, 7, 2, 1, 0, 8, 3, 2, 3, 0, 7, 0, 5, 3, 0, 6, 9, 9, 4, 5, 1, 4,
+    6, 0, 3, 6, 6, 0, 5, 4, 9, 2, 5, 6, 1, 0, 9, 2, 7, 1, 5, 5, 8, 1,
+    1, 7, 4, 4, 5, 1, 7, 0, 0, 6, 8, 8, 2, 1, 1, 6, 8, 8, 3, 0, 3, 0,
+    2, 1, 3, 4, 8, 2, 2, 5, 5, 6, 4, 3, 7, 9, 4, 4, 9, 4, 9, 6, 8, 8,
+    2, 5, 1, 3, 3, 3, 0, 5, 8, 2, 1, 7, 8, 6, 0, 8, 1, 8, 2, 3, 2, 9,
+    3, 4, 7, 8, 2, 1, 3, 5, 6, 2, 1, 4, 4, 5, 5, 7, 7, 1, 3, 0, 3, 9,
+    2, 3, 4, 2, 2, 9, 6, 4, 8, 8, 8, 1, 3, 9, 6, 6, 7, 9, 1, 4, 7, 8,
+    6, 3, 3, 6, 0, 7, 4, 5, 3, 1, 5, 2, 2, 2, 8, 3, 9, 0, 2, 5, 0, 2,
+    5, 0, 0, 4, 2, 9, 6, 9, 5, 8, 6, 0, 4, 9, 2, 9, 0, 2, 9, 2, 1, 0,
+    6, 6, 7, 7, 6, 2, 3, 0, 3, 7, 5, 9, 5, 8, 9, 9, 4, 0, 7, 5, 8, 7,
+    5, 0, 3, 5, 6, 5, 7, 3, 8, 4, 0, 0, 3, 2, 5, 8, 2, 5, 6, 0, 1, 1,
+    6, 3, 2, 9, 1, 2, 3, 7, 7, 2, 1, 8, 5, 8, 2, 5, 9, 1, 6, 2, 7, 1,
+    0, 9, 9, 2, 0, 9, 9, 4, 3, 4, 7, 4, 8, 6, 2, 1, 5, 1, 4, 0, 1, 0,
+    4, 0, 8, 8, 5, 8, 2, 9, 0, 9, 8, 0, 1, 9, 2, 1, 2, 6, 5, 4, 7, 2,
+    1, 6, 6, 1, 1, 2, 2, 4, 0, 7, 5, 5, 1, 0, 0, 1, 5, 7, 4, 4, 9, 5,
+    5, 6, 7, 6, 6, 5, 8, 1, 5, 4, 2, 7, 7, 0, 9, 6, 5, 1, 1, 3, 4, 0,
+    1, 6, 2, 7, 6, 7, 4, 6, 9, 8, 2, 3, 6, 5, 5, 8, 5, 9, 5, 4, 3, 1,
+    5, 8, 3, 2, 0, 5, 4, 1, 8, 4, 1, 1, 0, 3, 9, 7, 3, 5, 5, 7, 8, 5,
+    8, 4, 9, 6, 0, 9, 9, 0, 3, 2, 2, 5, 4, 1, 1, 1, 2, 7, 3, 9, 3, 9,
+    8, 2, 8, 0, 8, 6, 7, 3, 5, 4, 8, 4, 3, 8, 6, 3, 4, 8, 6, 6, 3, 2,
+    6, 9, 6, 3, 4, 6, 7, 5, 1, 3]
+    var logarray = new Array
+    count = 0
+    document.getElementById("yes").addEventListener("click", trueclick);
+    document.getElementById("noo").addEventListener("click", falseclick);
+    document.getElementById("back").addEventListener("click", goback);
+
+    function save_csv(count) {
+        if (count <= 1000){
+            document.getElementById("display_img").src="./img/" + count + ".png";
+            document.getElementById("curr_lab").innerHTML = wordlabel[label[count]];
+            document.getElementById("progress").innerHTML = count;
+        }
+        if (count== 1000)
+        {
+            var csv = "";
+            for (let row of logarray) {
+                for (let col of row) { csv += col + ","; }
+                csv += "\r\n";
+            }
+            
+            // (C) CREATE BLOB OBJECT
+            var myBlob = new Blob([csv], {type: "text/csv"});
+            
+            // (D) CREATE DOWNLOAD LINK
+            var url = window.URL.createObjectURL(myBlob);
+            var anchor = document.createElement("a");
+            anchor.href = url;
+            anchor.download = "result.csv";
+            
+            // (E) "FORCE DOWNLOAD"
+            // NOTE: MAY NOT ALWAYS WORK DUE TO BROWSER SECURITY
+            // BETTER TO LET USERS CLICK ON THEIR OWN
+            anchor.click();
+            window.URL.revokeObjectURL(url);
+            anchor.remove();
+        } else if (count > 1000) {
+            alert("Job finish! Please close this page and submit the result csv file.");
+        }
+    }
+
+    function updateFileValue(count) {
+        var fileElement = document.getElementById("file");
+        fileElement.value = count/10;
+      }
+
+    function trueclick() {
+        var curr_img = document.getElementById("display_img").src;
+        logarray.push([1, curr_img]);
+        count++;
+        save_csv(count);
+        updateFileValue(count);
+    }
+
+    function goback() {
+        var curr_img = document.getElementById("display_img").src;
+        logarray.pop();
+        count--;
+        save_csv(count);
+        console.log(logarray);
+        updateFileValue(count);
+    }
+
+    function falseclick() {
+        var curr_img = document.getElementById("display_img").src;
+        logarray.push([0, curr_img]);
+        count++;
+        save_csv(count);
+        updateFileValue(count);
+    }
+
+    
+</script>
