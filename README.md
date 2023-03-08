@@ -41,7 +41,7 @@ For `Badnets One-Tar` in class 38 with 33% in-class poison ratio:
 python main.py --corruption_type badnets --corruption_ratio 0.33
 ```
 
-# Make it plug-in?
+# Make Meta-Sift plug-in?
 ```python
 from meta_sift import *
 class Args:
@@ -63,8 +63,8 @@ class Args:
 args=Args()
 clean_idx = meta_sift(args, dataset)
 ```
-This is a standard Meta-Sift code that can be plug into any PyTorch standard dataset.
-Change the parameter in `args` and change the `dataset` as your poisoned dataset, it will return about 1000 clean sample indices from the `dataset`. You can use `torch.utils.data.Subset(dataset, clean_idx)` to create the baseset dataset.
+This is a standard Meta-Sift code block that can be plug in with any PyTorch standard dataset.
+Change the parameter in `args` and change the `dataset` as your poisoned dataset and run it, the return are at least 1000 clean sample indices from the `dataset`. You can use `torch.utils.data.Subset(dataset, clean_idx)` to get the base set dataset after siting.
 
 
 

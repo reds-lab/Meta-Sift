@@ -144,8 +144,7 @@ def test_sifter(args, dataset, vnet_list, mnet_list):
         v_res[i,:] = copy.deepcopy(v)
     return v_res
 
-def get_sifter_result(args, dataset, v_res):
-    total_pick = 1000
+def get_sifter_result(args, dataset, v_res, total_pick = 1000):
 
     class_per = []
     for i in np.unique(dataset.targets):
@@ -169,7 +168,7 @@ def get_sifter_result(args, dataset, v_res):
 
 
 
-def meta_sift(args, dataset):
+def meta_sift(args, dataset, total_pick=1000):
     set_seed(args.random_seed)
     test_poi_set = copy.deepcopy(dataset)
     test_poi_set.transform = transforms.Compose([
@@ -179,4 +178,4 @@ def meta_sift(args, dataset):
     ])
     vnet_list, mnet_list = train_sifter(args, dataset)
     v_res = test_sifter(args, test_poi_set, vnet_list, mnet_list)
-    return get_sifter_result(args, test_poi_set, v_res)
+    return get_sifter_result(args, test_poi_set, v_res, total_pick)
