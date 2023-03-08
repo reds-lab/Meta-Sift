@@ -4,7 +4,7 @@ import torch
 import torch.nn.functional as F
 
 
-def DC(dataset, total_pick = 1000):
+def DCM(dataset, total_pick = 1000):
 
     # Calculate the average image of each class
     dataset.num_classes = len(np.unique(dataset.targets))
