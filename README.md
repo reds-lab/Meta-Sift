@@ -26,7 +26,7 @@ Below we list more experiments to demonstrate Meta-Sift's effectiveness against 
 
 For `Targeted Label Flipping` from class 2 to class 38 with 16.67% in-class poison ratio:  
 ```ruby
-python main.py --corruption_type targeted_label_filpping --corruption_ratio 0.2
+python main.py --corruption_type targeted_label_filpping --corruption_ratio 0.1667
 ```
 
 
