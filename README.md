@@ -46,8 +46,7 @@ python main.py --corruption_type badnets --corruption_ratio 0.33
 from meta_sift import *
 class Args:
     num_classes = 43
-    tar_lab = 38
-    repeat_rounds = 5
+    num_sifter = 5
     res_epochs = 1
     warmup_epochs = 1
     batch_size = 128

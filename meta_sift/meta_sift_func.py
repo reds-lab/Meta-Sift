@@ -25,13 +25,6 @@ def get_dataset(args):
     args.num_classes = len(np.unique(np.array(trainset.targets)))
     train_poi_set, poi_idx = poi_dataset(trainset, poi_methond=args.corruption_type, transform=train_transform, poi_rates=args.corruption_ratio,random_seed=args.random_seed, tar_lab=args.tar_lab)
 
-    # test_trans = transforms.Compose([
-    #     transforms.Resize(32),
-    #     transforms.RandomCrop(32, padding=4),
-    #     transforms.RandomHorizontalFlip(),
-    #     transforms.ToTensor(),
-    # ])
-    # test_poi_set, poi_idx = poi_dataset(trainset, poi_methond=args.corruption_type, transform=test_trans, poi_rates=args.corruption_ratio,random_seed=args.random_seed, tar_lab=args.tar_lab)
     return train_poi_set, poi_idx
     
 
@@ -48,7 +41,7 @@ def train_sifter(args, dataset):
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
     mnet_list = []
     vnet_list = []
-    for i in range(args.repeat_rounds):
+    for i in range(args.num_sifter):
         print("-----------Training sifter number: " + str(i) + "-----------")
         model, optimizer_a, vnet, optimizer_c = build_training(args)
         grad_models, grad_optimizers = build_grad_models(args, model)
@@ -121,8 +114,8 @@ def train_sifter(args, dataset):
 def test_sifter(args, dataset, vnet_list, mnet_list):
     test_dataloader = torch.utils.data.DataLoader(dataset, batch_size=args.batch_size, shuffle=False, num_workers=args.num_workers, pin_memory=True)
     criterion = nn.CrossEntropyLoss(reduction='none').cuda()
-    v_res = np.zeros((args.repeat_rounds, len(dataset)), dtype=np.float32)
-    for i in range(args.repeat_rounds):
+    v_res = np.zeros((args.num_sifter, len(dataset)), dtype=np.float32)
+    for i in range(args.num_sifter):
         v = np.zeros((len(dataset)), dtype=np.float32)
         meta_model = mnet_list[i]
         meta_model.eval()
@@ -165,8 +158,6 @@ def get_sifter_result(args, dataset, v_res, total_pick = 1000):
     new_idx = [i for item in new_idx for i in item]
     new_idx = np.array(new_idx)
     return new_idx
-
-
 
 def meta_sift(args, dataset, total_pick=1000):
     set_seed(args.random_seed)

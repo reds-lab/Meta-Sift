@@ -28,7 +28,7 @@ if __name__ == '__main__':
     parser.add_argument('--corruption_type', type=str, default="badnets")
     parser.add_argument('--corruption_ratio', type=float, default=0.33)
     parser.add_argument('--tar_lab', type=int, default=38)
-    parser.add_argument('--repeat_rounds', type=int, default=5)
+    parser.add_argument('--num_sifter', type=int, default=5)
     parser.add_argument('--res_epochs', type=int, default=1)
     parser.add_argument('--warmup_epochs', type=int, default=1)
     parser.add_argument('--random_seed', type=int, default=0)
