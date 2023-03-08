@@ -1,10 +1,19 @@
 # Meta-Sift: A PyTorch Implementation
 This is the artifacts evaluation of the USENIX'23 paper [Meta-Sift: How to Sift Out a Clean Subset in the Presence of Data Poisoning?](https://arxiv.org/abs/2210.06516)
-This GitHub repo focuses on road mapping and reproduces the results to support the three main claims we developed in the "Meta-Sift" paper:
+This GitHub repo focuses on road mapping and reproduces the results to support the **three main claims** we developed in the "Meta-Sift" paper:
 1. Defense performance is sensitive to the purity of the
 base set (**Takeaway \#1 in Section 1**).
 2. Both existing automated methods and human inspection fail to identify a clean subset with high enough precision (**Takeaway \#2 in Section 1**).
-3. Our proposed solution, Meta-Sift, can obtain a stable subset in many poison situations (**Takeaway \#3 in Section 1**).
+3. Our proposed solution, Meta-Sift, can obtain a clean subset of the required budget in many poison situations (**Takeaway \#3 in Section 1**).
+
+# Hardware platform
+All results are evaluated using a server with 2 $\times$ `AMD EPYC 7763 64-Core` Processor (CPUs) and 8 $\times$ `NVIDIA RTX A6000` (GPUs). We have provided SSH-based access to our hardware platform for evaluators. If you are an artifact evaluator for USENIX'23, please refer to our USENIX'23 Artifacts Submission or contact the authors to obtain help for accessibility.
+
+# Software platform
+After obtaining the accessibility to our server, you will need to install the required Conda environment for the evaluation. You will need to first clone this repo to your disk. Under this artifacts folder, you can use the following line to create a new Conda environment that has all the dependencies resolved and tested on our backend:
+```console
+conda ....
+```
 
 # A quick start for reproducing one experiment of each claim
 The file `quick_start.ipynb` file contains a simple implementation to verify our three points of view, and the following part is guidance on how to run it:
@@ -41,7 +50,7 @@ For `Badnets One-Tar` in class 38 with 33% in-class poison ratio:
 python main.py --corruption_type badnets --corruption_ratio 0.33
 ```
 
-# Make Meta-Sift plug-in?
+# Meta-Sift as a plug-in tool?
 ```python
 from meta_sift import *
 class Args:
