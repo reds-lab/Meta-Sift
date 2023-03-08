@@ -7,7 +7,7 @@ base set (**Takeaway \#1 in Section 1**).
 3. Our proposed solution, Meta-Sift, can obtain a clean subset of the required budget in many poison situations (**Takeaway \#3 in Section 1**).
 
 # (Before Start) Hardware platform
-All results are evaluated using a server with 2 $\times$ `AMD EPYC 7763 64-Core` Processor (CPUs) and 8 $\times$ `NVIDIA RTX A6000` (GPUs). We have provided SSH-based access to our hardware platform for evaluators. If you are an artifact evaluator for USENIX'23, please refer to our USENIX'23 Artifacts Submission or contact the authors to obtain help for accessibility.
+All results are evaluated using a server with 2 $\times$ `AMD EPYC 7763 64-Core` Processor (CPUs) and 8 $\times$ `NVIDIA RTX A6000` (GPUs). We have provided SSH-based access to our hardware platform for evaluators. If you are an artifact evaluator for USENIX'23, please refer to our USENIX'23 Artifacts Submission and contact the authors to obtain help for accessing our server.
 
 # (Before Start) Software platform
 After obtaining the accessibility to our server, you will need to install the required Conda environment for the evaluation. You will need to first clone this repo to your disk. Under this artifact's folder, you can use the following line to create a new Conda environment that has all the dependencies resolved and tested on our backend:
