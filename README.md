@@ -24,21 +24,21 @@ Our paper makes an important claim: humans only have limited capability in ident
 
 Below we list more experiments to demonstrate Meta-Sift's effectiveness against different poisoning methods. The provided code implements three representative or state-of-the-art poisoning attacks from each category: `Targeted Label Flipping` for `Label-only attacks,` `Narcissus Clean-label Backdoor` for `Feature-only attacks,` and `Badnets One-Tar` for `Label-Feature attacks.` The `main.py` first loads and passes the poisoned dataset to our Meta-Sift implementation, which then evaluates the proposed method and outputs the Normalized Corruption Rate (NCR) while saving the selected index (the clean base set). Here is the start command: 
 
-For `Targeted Label Flipping` from class 2 to class 38 with 16.67% Target :  
+For `Targeted Label Flipping` from class 2 to class 38 with 16.67% in-class poison ratio:  
 ```ruby
-python main.py --corruption_type targeted_label_filpping --corruption_ratio 0.5
+python main.py --corruption_type targeted_label_filpping --corruption_ratio 0.2
 ```
 
 
-For `Narcissus Clean-label Backdoor` in class 38:  
+For `Narcissus Clean-label Backdoor` in class 38 with 10% in-class poison ratio:  
 ```ruby
 python main.py --corruption_type narcissus --corruption_ratio 0.1
 ```
 
 
-For `Badnets One-Tar` in class 38:  
+For `Badnets One-Tar` in class 38 with 33% in-class poison ratio:  
 ```ruby
-python main.py
+python main.py --corruption_type badnets --corruption_ratio 0.33
 ```
 
 
