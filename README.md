@@ -61,10 +61,10 @@ class Args:
     nesterov = True
     random_seed = 0
 args=Args()
-clean_idx = meta_sift(args, dataset)
+clean_idx = meta_sift(args, dataset, total_pick=1000)
 ```
 This is a standard Meta-Sift code block that can be plug in with any PyTorch standard dataset.
-Change the parameter in `args` and change the `dataset` as your poisoned dataset and run it, the return are at least 1000 clean sample indices from the `dataset`. You can use `torch.utils.data.Subset(dataset, clean_idx)` to get the base set dataset after siting.
+Change the parameter in `args` and change the `dataset` as your poisoned dataset and run it, the return are at least `total_pick` clean sample indices from the `dataset`. You can use `torch.utils.data.Subset(dataset, clean_idx)` to get the base set dataset after siting.
 
 
 
