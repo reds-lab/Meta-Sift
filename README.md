@@ -19,7 +19,7 @@ With this required environment being set up, you can then proceed with the follo
 # 1. A quick start for reproducing one experiment of each claim
 The file `quick_start.ipynb` file contains a simple implementation to verify our three points of view, and the following part is guidance on how to run it:
 
-1. Download dataset `gtsrb_dataset.h5` form this [link](https://drive.google.com/file/d/1SKYMwrnjEyFjjc7UWTdAyAjFI_demNtD/view?usp=sharing) and put it on './dataset' folder.
+1. Download dataset `gtsrb_dataset.h5` form this [link](https://drive.google.com/file/d/1SKYMwrnjEyFjjc7UWTdAyAjFI_demNtD/view?usp=sharing) and put it under './dataset' folder.
 
 2. Run the `quick_start.ipynb`!
 
