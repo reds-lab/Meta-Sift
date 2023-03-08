@@ -13,7 +13,7 @@ The file `quick_start.ipynb` file contains a simple implementation to verify our
 
 2. Use `pip install -r requirements.txt` to install the required packages.
 
-3. Run the `quick_start.ipynb`; more detailed comments are in the file!
+3. Run the `quick_start.ipynb`!
 
 # Human inspection experiment
 
