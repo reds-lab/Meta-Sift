@@ -35,3 +35,27 @@ For Narcissus in class 38:
 
 Another important claim in out paper is that humans cannot filter a clean base set, and the labeling tools and dataset used in the experiments can be found at `./human_exp` folder.
 
+# Make it plug-in?
+```python
+from meta_sift import *
+class Args:
+    num_classes = 43
+    tar_lab = 38
+    repeat_rounds = 5
+    res_epochs = 1
+    warmup_epochs = 1
+    batch_size = 128
+    num_workers = 16
+    v_lr = 0.0005
+    meta_lr = 0.1
+    top_k = 15
+    go_lr = 1e-1
+    num_act = 4
+    momentum = 0.9
+    nesterov = True
+    random_seed = 0
+args=Args()
+clean_idx = meta_sift(args, dataset)
+```
+This is a standard Meta-Sift code that can be plug into any PyTorch standard dataset.
+Change the parameter in `args` and change the `dataset` as your poisoned dataset, it will return about 1000 clean sample indices from the `dataset`. You can use `torch.utils.data.Subset(dataset, clean_idx)` to create the baseset dataset.
