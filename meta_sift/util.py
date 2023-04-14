@@ -4,14 +4,21 @@ import torch
 import torch.nn as nn
 from torch.autograd import Variable
 import random 
+import os
 
 seed = 0
 
-def set_seed(seed):
-    random.seed(seed)
+def set_seeds(seed: int = 42) -> None:
     np.random.seed(seed)
+    random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed(seed)
+    # When running on the CuDNN backend, two further options must be set
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    # Set a fixed value for the hash seed
+    os.environ["PYTHONHASHSEED"] = str(seed)
+    print(f"Random seed set as {seed}")
 
 def get_results(model, data_set):
     data_loader = torch.utils.data.DataLoader(data_set, batch_size=128, num_workers=4, shuffle=False)
